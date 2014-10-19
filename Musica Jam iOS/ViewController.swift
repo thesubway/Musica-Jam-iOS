@@ -19,7 +19,44 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.isLoggedIn = false
         var permissions = ["public_profile", "email"]
+        Parse.setApplicationId("6KdHDtMQFn1MaqvCLRk0qpmHSWyMqd8NLD1dcAuR", clientKey: "cJkJaSsztnUDyR5C1hw1KQqjTvUfQ0XJYiGgjFim")
         
+//        var score = PFObject(className: "score")
+//        score.setObject("Rob", forKey: "name")
+//        score.setObject(95, forKey: "number")
+//        score.saveInBackgroundWithBlock {(success: Bool!, error: NSError!) -> Void in
+//            if success == true {
+//                println("Score created with ID: \(score.objectId)")
+//            }
+//            else {
+//                var alert = UIAlertView()
+//                alert.title = "Failure"
+//                alert.message = "Score could not be sent:\n\(error)"
+//                alert.addButtonWithTitle("OK")
+//            }
+//        }
+        
+        PFFacebookUtils.logInWithPermissions(permissions, { (user: PFUser!, error: NSError!) -> Void in
+            if user == nil {
+                NSLog("User cancelled login.")
+                self.authAgain()
+            }
+            else if user.isNew {
+                NSLog("New user signs up, logs in.")
+                self.isLoggedIn = true
+                self.loadNew()
+            }
+            else {
+                NSLog("User logs in.")
+                self.isLoggedIn = true
+                self.loadData()
+            }
+            
+        })
+    }
+    
+    func authAgain() {
+        var permissions = ["public_profile", "email"]
         PFFacebookUtils.logInWithPermissions(permissions, { (user: PFUser!, error: NSError!) -> Void in
             if user == nil {
                 NSLog("User cancelled login.")
@@ -27,18 +64,16 @@ class ViewController: UIViewController {
             else if user.isNew {
                 NSLog("New user signs up, logs in.")
                 self.isLoggedIn = true
+                self.loadNew()
             }
             else {
                 NSLog("User logs in.")
                 self.isLoggedIn = true
-            }
-            
-            if self.isLoggedIn == true {
                 self.loadData()
             }
+            
         })
     }
-    
     
     func loadData() {
         var request = FBRequest.requestForMe()
@@ -58,6 +93,64 @@ class ViewController: UIViewController {
             var imageData : NSData = NSData.dataWithContentsOfURL(pictureURL, options: nil, error: nil)
             self.imageView.image = UIImage(data: imageData)
             self.welcomeLabel.text = "Hello, \(name)!"
+            
+            
+            
+            /*
+            var score = PFObject(className: "score")
+            score.setObject("Rob", forKey: "name")
+            score.setObject(95, forKey: "number")
+            score.saveInBackgroundWithBlock {(success: Bool!, error: NSError!) -> Void in
+            if success == true {
+            println("Score created with ID: \(score.objectId)")
+            }
+            else {
+            var alert = UIAlertView()
+            alert.title = "Failure"
+            alert.message = "Score could not be sent:\n\(error)"
+            alert.addButtonWithTitle("OK")
+            }
+            }
+            */
+        }
+        
+    }
+    func loadNew() {
+        var request = FBRequest.requestForMe()
+        request.startWithCompletionHandler { (connection : FBRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
+            
+            var userData : NSDictionary = result as NSDictionary
+            var facebookID = userData["id"] as String
+            var name = userData["name"] as String
+            //            var location = userData["location"]
+            var gender = userData["gender"] as String
+            
+            println("name: \(name)")
+            println("gender: \(gender)")
+            println("id: \(facebookID)")
+            //NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
+            var pictureURL = NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")
+            var imageData : NSData = NSData.dataWithContentsOfURL(pictureURL, options: nil, error: nil)
+            self.imageView.image = UIImage(data: imageData)
+            self.welcomeLabel.text = "Hello, \(name)!"
+            
+            //name, username, pictureURL, town, store those onto parse.
+            var score = PFObject(className: "Prfl")
+            score.setObject(name, forKey: "name")
+            score.setObject(facebookID.toInt(), forKey: "number")
+            //            user.setObject(pictureURL, forKey: "pictureURL")
+            score.saveInBackgroundWithBlock {(success: Bool!, error: NSError!) -> Void in
+                if success == true {
+                    println("Score created with ID: \(score.objectId)")
+                }
+                else {
+                    var alert = UIAlertView()
+                    alert.title = "Failure"
+                    alert.message = "Score could not be sent:\n\(error)"
+                    alert.addButtonWithTitle("OK")
+                }
+            }
+            
         }
     }
     
