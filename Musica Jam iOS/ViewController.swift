@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet var imageView : UIImageView!
     var profileView: UIView!
     var isLoggedIn = false
+    var name : String!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.isLoggedIn = false
@@ -82,6 +83,7 @@ class ViewController: UIViewController {
             var userData : NSDictionary = result as NSDictionary
             var facebookID = userData["id"] as String
             var name = userData["name"] as String
+            self.name = name
             //            var location = userData["location"]
             var gender = userData["gender"] as String
             
@@ -92,7 +94,7 @@ class ViewController: UIViewController {
             var pictureURL = NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")
             var imageData : NSData = NSData.dataWithContentsOfURL(pictureURL, options: nil, error: nil)
             self.imageView.image = UIImage(data: imageData)
-            self.welcomeLabel.text = "Hello, \(name)!"
+            self.welcomeLabel.text = "Hello, \(name)"
             
             
             
@@ -166,13 +168,32 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonPressed(sender: AnyObject) {
-        if self.isLoggedIn == true {
-            var feedView = self.storyboard?.instantiateViewControllerWithIdentifier("feedView") as FeedViewController
-            self.navigationController?.pushViewController(feedView, animated: true)
+        
+        //retrieving some data from parse:
+        var query = PFQuery(className: "Prfl")
+        query.whereKey("name", equalTo: self.name)
+        query.getFirstObjectInBackgroundWithBlock { (score : PFObject!, error: NSError!) -> Void in
+            if error == nil {
+                println(score.objectForKey("name"))
+                //edit the object here:
+                //score["name"] = "Robert"
+                if self.isLoggedIn == true {
+                    var feedView = self.storyboard?.instantiateViewControllerWithIdentifier("feedView") as FeedViewController
+                    self.navigationController?.pushViewController(feedView, animated: true)
+                }
+                else {
+                    println()
+                }
+            }
+            else {
+                println(error)
+            }
         }
-        else {
-            println()
-        }
+//        query.getObjectInBackgroundWithId("eZT80ovU43") {
+//            (score : PFObject!, error: NSError!) -> Void in
+//            
+//        }
+        
     }
     
     @IBAction func logInPressed(sender: AnyObject) {
