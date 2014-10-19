@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     var isLoggedIn = false
     var name : String!
     var number : Int!
+    
+    var selfReceiveYes = [Int]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.editButton.hidden = true
@@ -39,6 +41,7 @@ class ViewController: UIViewController {
 //                alert.addButtonWithTitle("OK")
 //            }
 //        }
+        
         
         PFFacebookUtils.logInWithPermissions(permissions, { (user: PFUser!, error: NSError!) -> Void in
             if user == nil {
@@ -144,6 +147,7 @@ class ViewController: UIViewController {
             var score = PFObject(className: "Prfl")
             score.setObject(name, forKey: "name")
             score.setObject(facebookID.toInt(), forKey: "number")
+            score.setObject(self.selfReceiveYes, forKey: "receiveYes")
             //            user.setObject(pictureURL, forKey: "pictureURL")
             score.saveInBackgroundWithBlock {(success: Bool!, error: NSError!) -> Void in
                 if success == true {

@@ -12,12 +12,16 @@ import MediaPlayer
 class FeedViewController: UIViewController, UIWebViewDelegate {
     let ACTION_MARGIN : CGFloat = 80
     var number : Int!
+    var opponentNumber : Int!
     var selfName : String!
     var profileView: UIView!
     var startingIDs = [10204036005753099, 784053564966994, 608341595942238]
     
     var deselecting = false
     var nameLabel : UILabel!
+    var oppReceiveYes = [Int]()
+    var selfReceiveYes = [Int]()
+    
     @IBInspectable var indexNum : Int! {
         didSet {
             if let knownIndex = indexNum {
@@ -42,7 +46,8 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
         query.getFirstObjectInBackgroundWithBlock { (score : PFObject!, error: NSError!) -> Void in
             if error == nil {
                 self.selfName = score.objectForKey("name") as String
-                println(self.selfName)
+                self.selfReceiveYes = score.objectForKey("receiveYes") as [Int]
+                println(self.selfReceiveYes.count)
                 //edit the object here:
                 //score["name"] = "Robert"
                 print()
@@ -116,6 +121,8 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
                     }
                     else {
                         self.nameLabel.text = score.objectForKey("name") as? String
+                        self.opponentNumber = score.objectForKey("number") as Int
+                        self.oppReceiveYes = score.objectForKey("receiveYes") as [Int]
                         println()
                     }
                     //edit the object here:
@@ -157,6 +164,42 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
     }
     func sayYes() {
         println("Chosen")
+        var oppName = ""
+        self.oppReceiveYes.append(self.number)
+        var queryOpponent = PFQuery(className: "Prfl")
+        queryOpponent.whereKey("number", equalTo: self.opponentNumber)
+        queryOpponent.getFirstObjectInBackgroundWithBlock { (scoreOpp : PFObject!, error: NSError!) -> Void in
+            if error == nil {
+                //notify the other person, that he was accepted:
+                oppName = scoreOpp.objectForKey("name") as String
+                scoreOpp.setObject(self.oppReceiveYes, forKey: "receiveYes")
+                scoreOpp.saveInBackground()
+            }
+            else {
+                println(error)
+            }
+        }
+        
+        var query = PFQuery(className: "Prfl")
+        query.whereKey("number", equalTo: self.number)
+        query.getFirstObjectInBackgroundWithBlock { (score : PFObject!, error: NSError!) -> Void in
+            if error == nil {
+                self.selfName = score.objectForKey("name") as String
+                //loop through to find matches:
+                for eachInt in self.selfReceiveYes {
+                    if eachInt == self.opponentNumber {
+                        var alert: UIAlertView = UIAlertView()
+                        alert.title = ""
+                        alert.message = "You are matched with \(oppName)!!!"
+                        alert.addButtonWithTitle("Ok")
+                        alert.show()
+                    }
+                }
+            }
+            else {
+                println(error)
+            }
+        }
     }
     
     func wasDragged(gesture: UIPanGestureRecognizer) {
