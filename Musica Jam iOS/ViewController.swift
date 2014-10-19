@@ -11,6 +11,7 @@ import MediaPlayer
 
 class ViewController: UIViewController {
     
+    @IBOutlet var welcomeLabel: UILabel!
     @IBOutlet var imageView : UIImageView!
     var profileView: UIView!
     var isLoggedIn = false
@@ -31,6 +32,10 @@ class ViewController: UIViewController {
                 NSLog("User logs in.")
                 self.isLoggedIn = true
             }
+            
+            if self.isLoggedIn == true {
+                self.loadData()
+            }
         })
     }
     
@@ -42,7 +47,7 @@ class ViewController: UIViewController {
             var userData : NSDictionary = result as NSDictionary
             var facebookID = userData["id"] as String
             var name = userData["name"] as String
-//            var location = userData["location"]
+            //            var location = userData["location"]
             var gender = userData["gender"] as String
             
             println("name: \(name)")
@@ -52,6 +57,7 @@ class ViewController: UIViewController {
             var pictureURL = NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")
             var imageData : NSData = NSData.dataWithContentsOfURL(pictureURL, options: nil, error: nil)
             self.imageView.image = UIImage(data: imageData)
+            self.welcomeLabel.text = "Hello, \(name)!"
         }
     }
     

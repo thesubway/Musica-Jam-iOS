@@ -30,33 +30,37 @@
                                     <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="48J-LX-0ev"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBA-Vo-EGL">
-                                <rect key="frame" x="30" y="103" width="100" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mwG-J2-oX1">
+                                <rect key="frame" x="85" y="249" width="274" height="198"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Xf1-o3-wLU"/>
-                                    <constraint firstAttribute="width" constant="100" id="kag-2m-hbx"/>
+                                    <constraint firstAttribute="width" constant="274" id="Dtv-X4-5a3"/>
+                                    <constraint firstAttribute="height" constant="198" id="Pkm-O6-WEk"/>
                                 </constraints>
-                                <state key="normal" title="Log In">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="logInPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tdA-v4-qm8"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mwG-J2-oX1">
-                                <rect key="frame" x="30" y="159" width="274" height="198"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnr-sR-Vdk">
+                                <rect key="frame" x="85" y="123" width="274" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="SAm-Nf-aYb"/>
+                                    <constraint firstAttribute="width" constant="274" id="d36-dT-P13"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5n9-po-c8g" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="07r-z1-XRe"/>
-                            <constraint firstItem="nBA-Vo-EGL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="14" id="ihG-Ro-mX3"/>
-                            <constraint firstItem="nBA-Vo-EGL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="83" id="nd6-zY-0pg"/>
+                            <constraint firstItem="fnr-sR-Vdk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="103" id="G1o-tD-pxq"/>
+                            <constraint firstItem="mwG-J2-oX1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="229" id="Xda-vJ-nra"/>
+                            <constraint firstItem="fnr-sR-Vdk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="69" id="jWa-gw-tKe"/>
+                            <constraint firstItem="mwG-J2-oX1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="69" id="o9u-Jx-hvc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5n9-po-c8g" secondAttribute="trailing" constant="8" id="qir-Ad-gac"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="mwG-J2-oX1" id="A43-pF-Xik"/>
+                        <outlet property="welcomeLabel" destination="fnr-sR-Vdk" id="ONf-3Q-Ony"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
