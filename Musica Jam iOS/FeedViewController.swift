@@ -15,7 +15,9 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
     var opponentNumber : Int!
     var selfName : String!
     var profileView: UIView!
+    var movieView: UIWebView!
     var startingIDs = [10204036005753099, 784053564966994, 608341595942238]
+    var youtubes = ["F_DtacB-T6U","RD9FNh4Ie7U","zN9R9L3QGsM"]
     
     var deselecting = false
     var nameLabel : UILabel!
@@ -41,6 +43,7 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         //before actually loading the views, find the user:
+        self.view.backgroundColor = UIColor.greenColor()
         var query = PFQuery(className: "Prfl")
         query.whereKey("number", equalTo: self.number)
         query.getFirstObjectInBackgroundWithBlock { (score : PFObject!, error: NSError!) -> Void in
@@ -77,12 +80,12 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
         // add movie:
         var movieWidth : CGFloat = self.profileView.bounds.width * 7 / 8
         var movieHeight : CGFloat = self.profileView.bounds.height * 1 / 2
-        var movieView = UIWebView()
+        self.movieView = UIWebView()
         //frame: CGRect(x: 20, y: 100, width: movieWidth, height: movieHeight)
-        movieView.frame = CGRectMake(self.profileView.bounds.width / 2 - (movieWidth / 2), self.profileView.bounds.height / 2 - (movieHeight / 2), movieWidth, movieHeight)
-        movieView.delegate = self
-        var request = NSURLRequest(URL: NSURL(string: "http://www.youtube.com/embed/YUivpcGc9Qs"))
-        movieView.loadRequest(request)
+        self.movieView.frame = CGRectMake(self.profileView.bounds.width / 2 - (movieWidth / 2), self.profileView.bounds.height / 2 - (movieHeight / 2), movieWidth, movieHeight)
+        self.movieView.delegate = self
+        var request = NSURLRequest(URL: NSURL(string: "http://www.youtube.com/embed/\(self.youtubes[self.indexNum])"))
+        self.movieView.loadRequest(request)
         self.profileView.addSubview(movieView)
         
         // add name:
@@ -120,6 +123,8 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
                         return
                     }
                     else {
+                        var request = NSURLRequest(URL: NSURL(string: "http://www.youtube.com/embed/\(self.youtubes[self.indexNum])"))
+                        self.movieView.loadRequest(request)
                         self.nameLabel.text = score.objectForKey("name") as? String
                         self.opponentNumber = score.objectForKey("number") as Int
                         self.oppReceiveYes = score.objectForKey("receiveYes") as [Int]
