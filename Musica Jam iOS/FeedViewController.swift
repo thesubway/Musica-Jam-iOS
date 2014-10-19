@@ -11,8 +11,24 @@ import MediaPlayer
 
 class FeedViewController: UIViewController, UIWebViewDelegate {
     let ACTION_MARGIN : CGFloat = 80
-    
+    var number : Int!
+    var selfName : String!
     var profileView: UIView!
+    var startingIDs = [10204036005753099, 784053564966994, 608341595942238]
+    
+    var deselecting = false
+    var nameLabel : UILabel!
+    @IBInspectable var indexNum : Int! {
+        didSet {
+            if let knownIndex = indexNum {
+                println(knownIndex)
+                println()
+                if knownIndex >= self.startingIDs.count {
+                    self.indexNum = 0
+                }
+            }
+        }
+    }
     //keep track of the x from center:
     var xFromCenter : CGFloat = 0
     
@@ -20,6 +36,24 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //before actually loading the views, find the user:
+        var query = PFQuery(className: "Prfl")
+        query.whereKey("number", equalTo: self.number)
+        query.getFirstObjectInBackgroundWithBlock { (score : PFObject!, error: NSError!) -> Void in
+            if error == nil {
+                self.selfName = score.objectForKey("name") as String
+                println(self.selfName)
+                //edit the object here:
+                //score["name"] = "Robert"
+                print()
+            }
+            else {
+                println(error)
+            }
+        }
+        //sample ID's for now: 10204036005753100, 784053564966994, 608341595942238.
+        self.showOneProfile()
+        
         var viewWidth : CGFloat = self.view.bounds.width * 2 / 3
         var viewHeight : CGFloat = self.view.bounds.height * 2 / 3
         var viewFrame = CGRectMake(self.view.bounds.width / 2 - (viewWidth / 2),self.view.bounds.height / 2 - (viewHeight / 2),viewWidth,viewHeight)
@@ -47,16 +81,52 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
         self.profileView.addSubview(movieView)
         
         // add name:
-        var nameLabel = UILabel()
+        self.nameLabel = UILabel()
         //x, y, width, height
-        var nameWidth : CGFloat = 70; var nameHeight : CGFloat = 20
+        var nameWidth : CGFloat = 70; var nameHeight : CGFloat = 50
         nameLabel.frame = CGRectMake(self.profileView.bounds.width / 2 - (nameWidth / 2), nameHeight, nameWidth, nameHeight)
         nameLabel.text = "Daniel"
+        nameLabel.font = UIFont(name: nameLabel.font.fontName, size: 18)
         nameLabel.layer.borderColor = UIColor.redColor().CGColor
         nameLabel.layer.borderWidth = 1
         nameLabel.backgroundColor = UIColor.redColor()
         println("name frame: \(nameLabel.frame)")
         self.profileView.addSubview(nameLabel)
+    }
+    
+    func showOneProfile() {
+        if self.indexNum == nil {
+            self.indexNum = 0
+        }
+        else {
+            self.indexNum = self.indexNum + 1
+        }
+        if let knownIndex = self.indexNum {
+            
+            var query = PFQuery(className: "Prfl")
+            println(self.startingIDs[knownIndex])
+            query.whereKey("number", equalTo: self.startingIDs[knownIndex])
+            query.getFirstObjectInBackgroundWithBlock { (score : PFObject!, error: NSError!) -> Void in
+                if error == nil {
+                    var fbID = score.objectForKey("number") as Int
+                    if self.number == fbID {
+                        //skip, so call showOneProfile again:
+                        self.showOneProfile()
+                        return
+                    }
+                    else {
+                        self.nameLabel.text = score.objectForKey("name") as? String
+                        println()
+                    }
+                    //edit the object here:
+                    //score["name"] = "Robert"
+                    print()
+                }
+                else {
+                    println(error)
+                }
+            }
+        }
     }
     
     func addButtons() {
@@ -79,10 +149,14 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
     }
     
     func sayNo() {
-        println("No pressed")
+//        if self.deselecting == false {
+            self.deselecting = true
+            println("Not Chosen")
+            self.showOneProfile()
+//        }
     }
     func sayYes() {
-        println("Yes pressed")
+        println("Chosen")
     }
     
     func wasDragged(gesture: UIPanGestureRecognizer) {
@@ -102,33 +176,49 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
         var stretch : CGAffineTransform = CGAffineTransformScale(rotation, scale, scale)
         label.transform = stretch
         if label.center.x < 100 {
-            println("Not Chosen")
+            
         } else if label.center.x > self.view.bounds.width - 100 {
-            println("Chosen")
+            
         }
         if gesture.state == UIGestureRecognizerState.Ended {
             if (self.xFromCenter > ACTION_MARGIN)
             {
+                self.sayYes()
+                println(self.xFromCenter)
+                self.xFromCenter = 0
+                label.center = CGPointMake(self.view.bounds.width / 2, self.view.bounds.height / 2)
+                scale = max(abs(self.xFromCenter)/100, 1)
+                rotation = CGAffineTransformMakeRotation(0)
+                stretch = CGAffineTransformScale(rotation, scale, scale)
+                label.transform = stretch
                 self.rightAction()
             }
             else if (xFromCenter < -ACTION_MARGIN)
             {
+                self.sayNo()
+                println(self.xFromCenter)
+                self.xFromCenter = 0
+                label.center = CGPointMake(self.view.bounds.width / 2, self.view.bounds.height / 2)
+                scale = max(abs(self.xFromCenter)/100, 1)
+                rotation = CGAffineTransformMakeRotation(0)
+                stretch = CGAffineTransformScale(rotation, scale, scale)
+                label.transform = stretch
                 self.leftAction()
             }
             else
             {
-                
+                UIView.animateWithDuration(0.15, animations:
+                    {
+                        println(self.xFromCenter)
+                        self.xFromCenter = 0
+                        label.center = CGPointMake(self.view.bounds.width / 2, self.view.bounds.height / 2)
+                        scale = max(abs(self.xFromCenter)/100, 1)
+                        rotation = CGAffineTransformMakeRotation(0)
+                        stretch = CGAffineTransformScale(rotation, scale, scale)
+                        label.transform = stretch
+                })
             }
-            UIView.animateWithDuration(0.15, animations:
-                {
-                    println(self.xFromCenter)
-                    self.xFromCenter = 0
-                    label.center = CGPointMake(self.view.bounds.width / 2, self.view.bounds.height / 2)
-                    scale = max(abs(self.xFromCenter)/100, 1)
-                    rotation = CGAffineTransformMakeRotation(0)
-                    stretch = CGAffineTransformScale(rotation, scale, scale)
-                    label.transform = stretch
-            })
+            
         }
 //        println("Dragged (\(label.center.x),(\(label.center.y)))")
     }

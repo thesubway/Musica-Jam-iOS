@@ -31,6 +31,7 @@
 		6D3A4FC119F3295D002D8119 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3A4FC019F3295D002D8119 /* SystemConfiguration.framework */; };
 		6D5628AD19F364E700801237 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5628AC19F364E700801237 /* Parse.framework */; };
 		6D5628AF19F36D0100801237 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5628AE19F36D0100801237 /* FeedViewController.swift */; };
+		6D5628B119F3D62300801237 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5628B019F3D62300801237 /* EditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		6D3A4FC019F3295D002D8119 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6D5628AC19F364E700801237 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../Downloads/parse-library-1.4.1/Parse.framework"; sourceTree = "<group>"; };
 		6D5628AE19F36D0100801237 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		6D5628B019F3D62300801237 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				6D3A4F7E19F2F072002D8119 /* AppDelegate.swift */,
 				6D3A4F8019F2F073002D8119 /* ViewController.swift */,
 				6D5628AE19F36D0100801237 /* FeedViewController.swift */,
+				6D5628B019F3D62300801237 /* EditViewController.swift */,
 				6D3A4F9E19F2F07E002D8119 /* Profile.swift */,
 				6D3A4FA019F2F261002D8119 /* FriendsList.swift */,
 				6D3A4F8219F2F073002D8119 /* Main.storyboard */,
@@ -288,6 +291,7 @@
 				6D3A4F7F19F2F072002D8119 /* AppDelegate.swift in Sources */,
 				6D5628AF19F36D0100801237 /* FeedViewController.swift in Sources */,
 				6D3A4FA119F2F261002D8119 /* FriendsList.swift in Sources */,
+				6D5628B119F3D62300801237 /* EditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

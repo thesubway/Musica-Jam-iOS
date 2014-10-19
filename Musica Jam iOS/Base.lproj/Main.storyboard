@@ -18,12 +18,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5n9-po-c8g">
-                                <rect key="frame" x="500" y="28" width="76" height="30"/>
+                                <rect key="frame" x="452" y="28" width="124" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="76" id="d2n-qM-pVy"/>
+                                    <constraint firstAttribute="width" constant="124" id="d2n-qM-pVy"/>
                                     <constraint firstAttribute="height" constant="30" id="eec-9E-eTX"/>
                                 </constraints>
-                                <state key="normal" title="My Profile">
+                                <state key="normal" title="Edit Info">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -47,18 +47,34 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqD-h7-hmD">
+                                <rect key="frame" x="452" y="94" width="124" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="DAA-lw-S1B"/>
+                                    <constraint firstAttribute="width" constant="124" id="Hfc-Wn-hJh"/>
+                                </constraints>
+                                <state key="normal" title="Search">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RBE-df-tN5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5n9-po-c8g" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="07r-z1-XRe"/>
                             <constraint firstItem="fnr-sR-Vdk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="103" id="G1o-tD-pxq"/>
+                            <constraint firstItem="mqD-h7-hmD" firstAttribute="top" secondItem="5n9-po-c8g" secondAttribute="bottom" constant="36" id="PUd-eP-k8U"/>
                             <constraint firstItem="mwG-J2-oX1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="229" id="Xda-vJ-nra"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mqD-h7-hmD" secondAttribute="trailing" constant="8" id="iur-Gf-PYx"/>
                             <constraint firstItem="fnr-sR-Vdk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="69" id="jWa-gw-tKe"/>
                             <constraint firstItem="mwG-J2-oX1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="69" id="o9u-Jx-hvc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5n9-po-c8g" secondAttribute="trailing" constant="8" id="qir-Ad-gac"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="editButton" destination="5n9-po-c8g" id="rDZ-EI-PIb"/>
                         <outlet property="imageView" destination="mwG-J2-oX1" id="A43-pF-Xik"/>
                         <outlet property="welcomeLabel" destination="fnr-sR-Vdk" id="ONf-3Q-Ony"/>
                     </connections>
@@ -83,6 +99,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DnS-Sr-fcY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="785" y="136"/>
+        </scene>
+        <!--Edit View Controller-->
+        <scene sceneID="glX-ZO-AK5">
+            <objects>
+                <viewController storyboardIdentifier="editView" id="0Ww-tr-sRk" customClass="EditViewController" customModule="Musica_Jam_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VpI-oq-mrc"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vzb-RE-6ua"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QGf-XY-2su">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mcq-bZ-lpp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="288" y="867"/>
         </scene>
     </scenes>
 </document>

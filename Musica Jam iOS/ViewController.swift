@@ -11,6 +11,7 @@ import MediaPlayer
 
 class ViewController: UIViewController {
     
+    @IBOutlet var editButton: UIButton!
     @IBOutlet var welcomeLabel: UILabel!
     @IBOutlet var imageView : UIImageView!
     var profileView: UIView!
@@ -19,6 +20,7 @@ class ViewController: UIViewController {
     var number : Int!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.editButton.hidden = true
         self.isLoggedIn = false
         var permissions = ["public_profile", "email"]
         Parse.setApplicationId("6KdHDtMQFn1MaqvCLRk0qpmHSWyMqd8NLD1dcAuR", clientKey: "cJkJaSsztnUDyR5C1hw1KQqjTvUfQ0XJYiGgjFim")
@@ -169,6 +171,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
     @IBAction func buttonPressed(sender: AnyObject) {
         
         //retrieving some data from parse:
@@ -179,13 +182,8 @@ class ViewController: UIViewController {
                 println(score.objectForKey("name"))
                 //edit the object here:
                 //score["name"] = "Robert"
-                if self.isLoggedIn == true {
-                    var feedView = self.storyboard?.instantiateViewControllerWithIdentifier("feedView") as FeedViewController
-                    self.navigationController?.pushViewController(feedView, animated: true)
-                }
-                else {
-                    println()
-                }
+                var editView = self.storyboard?.instantiateViewControllerWithIdentifier("editView") as EditViewController
+                self.navigationController?.pushViewController(editView, animated: true)
             }
             else {
                 println(error)
@@ -196,6 +194,18 @@ class ViewController: UIViewController {
 //            
 //        }
         
+    }
+    
+    
+    @IBAction func searchPressed(sender: AnyObject) {
+        if self.isLoggedIn == true {
+            var feedView = self.storyboard?.instantiateViewControllerWithIdentifier("feedView") as FeedViewController
+            feedView.number = self.number
+            self.navigationController?.pushViewController(feedView, animated: true)
+        }
+        else {
+            println()
+        }
     }
     
     @IBAction func logInPressed(sender: AnyObject) {
@@ -210,7 +220,6 @@ class ViewController: UIViewController {
             
         })
     }
-    
 
 }
 
