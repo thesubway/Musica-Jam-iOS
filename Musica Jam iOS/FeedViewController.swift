@@ -49,7 +49,7 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
         // add name:
         var nameLabel = UILabel()
         //x, y, width, height
-        var nameWidth : CGFloat = 50; var nameHeight : CGFloat = 20
+        var nameWidth : CGFloat = 70; var nameHeight : CGFloat = 20
         nameLabel.frame = CGRectMake(self.profileView.bounds.width / 2 - (nameWidth / 2), nameHeight, nameWidth, nameHeight)
         nameLabel.text = "Daniel"
         nameLabel.layer.borderColor = UIColor.redColor().CGColor
@@ -60,20 +60,29 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
     }
     
     func addButtons() {
-        var buttonWidth : CGFloat = self.profileView.bounds.width * 1 / 4
-        var buttonHeight : CGFloat = self.profileView.bounds.height * 1 / 4
-        var checkButton = UIButton()
-        checkButton.addTarget(self, action: Selector("sayNo"), forControlEvents: .TouchUpInside)
-        checkButton.frame = CGRectMake(self.profileView.bounds.width * 1 / 8, self.profileView.bounds.height * 7 / 8, 50, 50)
-        checkButton.backgroundColor = UIColor.blackColor()
-        checkButton.setTitle("X", forState: UIControlState.Normal)
-        self.profileView.addSubview(checkButton)
+//        var buttonWidth : CGFloat = self.profileView.bounds.width * 1 / 4
+//        var buttonHeight : CGFloat = self.profileView.bounds.height * 1 / 4
+        var noButton = UIButton()
+        noButton.addTarget(self, action: Selector("sayNo"), forControlEvents: .TouchUpInside)
+        noButton.frame = CGRectMake(self.profileView.bounds.width * 1 / 8, self.profileView.bounds.height * 7 / 8, 50, 50)
+        noButton.backgroundColor = UIColor.blackColor()
+        noButton.setTitle("X", forState: UIControlState.Normal)
+        self.profileView.addSubview(noButton)
         
         //now for second button:
+        var yesButton = UIButton()
+        yesButton.addTarget(self, action: Selector("sayYes"), forControlEvents: .TouchUpInside)
+        yesButton.frame = CGRectMake(self.profileView.bounds.width * 7 / 8, self.profileView.bounds.height * 7 / 8, 50, 50)
+        yesButton.backgroundColor = UIColor.blackColor()
+        yesButton.setTitle("√", forState: UIControlState.Normal)
+        self.profileView.addSubview(yesButton)
     }
     
     func sayNo() {
         println("No pressed")
+    }
+    func sayYes() {
+        println("Yes pressed")
     }
     
     func wasDragged(gesture: UIPanGestureRecognizer) {

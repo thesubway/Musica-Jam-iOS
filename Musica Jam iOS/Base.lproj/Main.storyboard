@@ -30,13 +30,34 @@
                                     <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="48J-LX-0ev"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBA-Vo-EGL">
+                                <rect key="frame" x="30" y="103" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Xf1-o3-wLU"/>
+                                    <constraint firstAttribute="width" constant="100" id="kag-2m-hbx"/>
+                                </constraints>
+                                <state key="normal" title="Log In">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logInPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tdA-v4-qm8"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mwG-J2-oX1">
+                                <rect key="frame" x="30" y="159" width="274" height="198"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5n9-po-c8g" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="07r-z1-XRe"/>
+                            <constraint firstItem="nBA-Vo-EGL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="14" id="ihG-Ro-mX3"/>
+                            <constraint firstItem="nBA-Vo-EGL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="83" id="nd6-zY-0pg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5n9-po-c8g" secondAttribute="trailing" constant="8" id="qir-Ad-gac"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="mwG-J2-oX1" id="A43-pF-Xik"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

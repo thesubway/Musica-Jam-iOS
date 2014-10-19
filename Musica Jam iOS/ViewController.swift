@@ -11,8 +11,9 @@ import MediaPlayer
 
 class ViewController: UIViewController {
     
+    @IBOutlet var imageView : UIImageView!
     var profileView: UIView!
-    var isLoggedIn : Bool!
+    var isLoggedIn = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.isLoggedIn = false
@@ -31,11 +32,32 @@ class ViewController: UIViewController {
                 self.isLoggedIn = true
             }
         })
-        
     }
+    
+    
+    func loadData() {
+        var request = FBRequest.requestForMe()
+        request.startWithCompletionHandler { (connection : FBRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
+            
+            var userData : NSDictionary = result as NSDictionary
+            var facebookID = userData["id"] as String
+            var name = userData["name"] as String
+//            var location = userData["location"]
+            var gender = userData["gender"] as String
+            
+            println("name: \(name)")
+            println("gender: \(gender)")
+            println("id: \(facebookID)")
+            //NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
+            var pictureURL = NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")
+            var imageData : NSData = NSData.dataWithContentsOfURL(pictureURL, options: nil, error: nil)
+            self.imageView.image = UIImage(data: imageData)
+        }
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+        //dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC)
     }
     
 
@@ -53,6 +75,20 @@ class ViewController: UIViewController {
             println()
         }
     }
+    
+    @IBAction func logInPressed(sender: AnyObject) {
+        dispatch_after(dispatch_time( DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)) ), dispatch_get_main_queue(), {
+            if self.isLoggedIn == false {
+                println("Please log in or sign up.")
+            }
+            else if self.isLoggedIn == true {
+                println("Hello!")
+                self.loadData()
+            }
+            
+        })
+    }
+    
 
 }
 
