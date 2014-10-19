@@ -88,7 +88,7 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
         // add name:
         self.nameLabel = UILabel()
         //x, y, width, height
-        var nameWidth : CGFloat = 70; var nameHeight : CGFloat = 50
+        var nameWidth : CGFloat = 120; var nameHeight : CGFloat = 50
         nameLabel.frame = CGRectMake(self.profileView.bounds.width / 2 - (nameWidth / 2), nameHeight, nameWidth, nameHeight)
         nameLabel.text = "Daniel"
         nameLabel.font = UIFont(name: nameLabel.font.fontName, size: 18)
@@ -188,11 +188,8 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
                 //loop through to find matches:
                 for eachInt in self.selfReceiveYes {
                     if eachInt == self.opponentNumber {
-                        var alert: UIAlertView = UIAlertView()
-                        alert.title = ""
-                        alert.message = "You are matched with \(oppName)!!!"
-                        alert.addButtonWithTitle("Ok")
-                        alert.show()
+                        var matchView = self.storyboard?.instantiateViewControllerWithIdentifier("matchView") as MatchViewController
+                        self.navigationController?.pushViewController(matchView, animated: true)
                     }
                 }
             }

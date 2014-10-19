@@ -32,6 +32,7 @@
 		6D5628AD19F364E700801237 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5628AC19F364E700801237 /* Parse.framework */; };
 		6D5628AF19F36D0100801237 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5628AE19F36D0100801237 /* FeedViewController.swift */; };
 		6D5628B119F3D62300801237 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5628B019F3D62300801237 /* EditViewController.swift */; };
+		6D5628B519F4057800801237 /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5628B419F4057800801237 /* MatchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		6D5628AC19F364E700801237 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../Downloads/parse-library-1.4.1/Parse.framework"; sourceTree = "<group>"; };
 		6D5628AE19F36D0100801237 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		6D5628B019F3D62300801237 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		6D5628B419F4057800801237 /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				6D3A4F7E19F2F072002D8119 /* AppDelegate.swift */,
 				6D3A4F8019F2F073002D8119 /* ViewController.swift */,
 				6D5628AE19F36D0100801237 /* FeedViewController.swift */,
+				6D5628B419F4057800801237 /* MatchViewController.swift */,
 				6D5628B019F3D62300801237 /* EditViewController.swift */,
 				6D3A4F9E19F2F07E002D8119 /* Profile.swift */,
 				6D3A4FA019F2F261002D8119 /* FriendsList.swift */,
@@ -285,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D5628B519F4057800801237 /* MatchViewController.swift in Sources */,
 				6D3A4FA719F327B5002D8119 /* Facebook-Bridge.m in Sources */,
 				6D3A4F8119F2F073002D8119 /* ViewController.swift in Sources */,
 				6D3A4F9F19F2F07E002D8119 /* Profile.swift in Sources */,
