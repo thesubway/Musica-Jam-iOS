@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import MediaPlayer
 
-class FeedViewController: UIViewController {
-
+class FeedViewController: UIViewController, UIWebViewDelegate {
+    let ACTION_MARGIN : CGFloat = 80
+    
     var profileView: UIView!
     //keep track of the x from center:
     var xFromCenter : CGFloat = 0
+    
+    var moviePlayer : MPMoviePlayerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +33,37 @@ class FeedViewController: UIViewController {
         self.profileView.addGestureRecognizer(gesture)
         //tell xcode you want to make this interactive:
         self.profileView.userInteractionEnabled = true
+        self.addButtons()
+        
+        // add movie:
+        var movieView = UIWebView(frame: CGRect(x: 20, y: 100, width: self.profileView.bounds.width * 7 / 8, height: self.profileView.bounds.height * 1 / 2))
+        movieView.delegate = self
+        var request = NSURLRequest(URL: NSURL(string: "http://www.youtube.com/embed/YUivpcGc9Qs"))
+        movieView.loadRequest(request)
+        self.profileView.addSubview(movieView)
+        
+        // add name:
+        var nameLabel = UILabel()
+        nameLabel.frame = CGRectMake(self.profileView.bounds.width / 2, self.profileView.bounds.height / 2, 50, 20)
+        nameLabel.text = "Daniel"
+        nameLabel.layer.borderColor = UIColor.redColor().CGColor
+        nameLabel.layer.borderWidth = 1
+        println("name frame: \(nameLabel.frame)")
+    }
+    
+    func addButtons() {
+        var buttonWidth : CGFloat = self.profileView.bounds.width * 1 / 4
+        var buttonHeight : CGFloat = self.profileView.bounds.height * 1 / 4
+        var checkButton = UIButton()
+        checkButton.addTarget(self, action: Selector("sayNo"), forControlEvents: .TouchUpInside)
+        checkButton.frame = CGRectMake(self.profileView.bounds.width * 1 / 8, self.profileView.bounds.height * 7 / 8, 50, 50)
+        checkButton.backgroundColor = UIColor.blackColor()
+        checkButton.setTitle("Hi", forState: UIControlState.Normal)
+        self.profileView.addSubview(checkButton)
+    }
+    
+    func sayNo() {
+        println("No pressed")
     }
     
     func wasDragged(gesture: UIPanGestureRecognizer) {
@@ -53,14 +88,42 @@ class FeedViewController: UIViewController {
             println("Chosen")
         }
         if gesture.state == UIGestureRecognizerState.Ended {
-            xFromCenter = 0
-            label.center = CGPointMake(self.view.bounds.width / 2, self.view.bounds.height / 2)
-            scale = max(abs(xFromCenter)/100, 1)
-            rotation = CGAffineTransformMakeRotation(0)
-            stretch = CGAffineTransformScale(rotation, scale, scale)
-            label.transform = stretch
+            if (self.xFromCenter > ACTION_MARGIN)
+            {
+                self.rightAction()
+            }
+            else if (xFromCenter < -ACTION_MARGIN)
+            {
+                self.leftAction()
+            }
+            else
+            {
+                
+            }
+            UIView.animateWithDuration(0.15, animations:
+                {
+                    println(self.xFromCenter)
+                    self.xFromCenter = 0
+                    label.center = CGPointMake(self.view.bounds.width / 2, self.view.bounds.height / 2)
+                    scale = max(abs(self.xFromCenter)/100, 1)
+                    rotation = CGAffineTransformMakeRotation(0)
+                    stretch = CGAffineTransformScale(rotation, scale, scale)
+                    label.transform = stretch
+            })
         }
-        println("Dragged (\(label.center.x),(\(label.center.y)))")
+//        println("Dragged (\(label.center.x),(\(label.center.y)))")
+    }
+    
+    func afterSwipeAction()
+    {
+        
+    }
+    
+    func rightAction() {
+        
+    }
+    func leftAction() {
+        
     }
 
     override func didReceiveMemoryWarning() {
