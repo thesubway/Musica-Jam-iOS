@@ -36,7 +36,11 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
         self.addButtons()
         
         // add movie:
-        var movieView = UIWebView(frame: CGRect(x: 20, y: 100, width: self.profileView.bounds.width * 7 / 8, height: self.profileView.bounds.height * 1 / 2))
+        var movieWidth : CGFloat = self.profileView.bounds.width * 7 / 8
+        var movieHeight : CGFloat = self.profileView.bounds.height * 1 / 2
+        var movieView = UIWebView()
+        //frame: CGRect(x: 20, y: 100, width: movieWidth, height: movieHeight)
+        movieView.frame = CGRectMake(self.profileView.bounds.width / 2 - (movieWidth / 2), self.profileView.bounds.height / 2 - (movieHeight / 2), movieWidth, movieHeight)
         movieView.delegate = self
         var request = NSURLRequest(URL: NSURL(string: "http://www.youtube.com/embed/YUivpcGc9Qs"))
         movieView.loadRequest(request)
@@ -44,11 +48,15 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
         
         // add name:
         var nameLabel = UILabel()
-        nameLabel.frame = CGRectMake(self.profileView.bounds.width / 2, self.profileView.bounds.height / 2, 50, 20)
+        //x, y, width, height
+        var nameWidth : CGFloat = 50; var nameHeight : CGFloat = 20
+        nameLabel.frame = CGRectMake(self.profileView.bounds.width / 2 - (nameWidth / 2), nameHeight, nameWidth, nameHeight)
         nameLabel.text = "Daniel"
         nameLabel.layer.borderColor = UIColor.redColor().CGColor
         nameLabel.layer.borderWidth = 1
+        nameLabel.backgroundColor = UIColor.redColor()
         println("name frame: \(nameLabel.frame)")
+        self.profileView.addSubview(nameLabel)
     }
     
     func addButtons() {
@@ -58,8 +66,10 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
         checkButton.addTarget(self, action: Selector("sayNo"), forControlEvents: .TouchUpInside)
         checkButton.frame = CGRectMake(self.profileView.bounds.width * 1 / 8, self.profileView.bounds.height * 7 / 8, 50, 50)
         checkButton.backgroundColor = UIColor.blackColor()
-        checkButton.setTitle("Hi", forState: UIControlState.Normal)
+        checkButton.setTitle("X", forState: UIControlState.Normal)
         self.profileView.addSubview(checkButton)
+        
+        //now for second button:
     }
     
     func sayNo() {
