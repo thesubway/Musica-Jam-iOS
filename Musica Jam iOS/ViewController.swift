@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     var profileView: UIView!
     var isLoggedIn = false
     var name : String!
+    var number : Int!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.isLoggedIn = false
@@ -84,7 +85,7 @@ class ViewController: UIViewController {
             var facebookID = userData["id"] as String
             var name = userData["name"] as String
             self.name = name
-            //            var location = userData["location"]
+            self.number = facebookID.toInt()
             var gender = userData["gender"] as String
             
             println("name: \(name)")
@@ -124,7 +125,8 @@ class ViewController: UIViewController {
             var userData : NSDictionary = result as NSDictionary
             var facebookID = userData["id"] as String
             var name = userData["name"] as String
-            //            var location = userData["location"]
+            self.name = name
+            self.number = facebookID.toInt()
             var gender = userData["gender"] as String
             
             println("name: \(name)")
@@ -171,7 +173,7 @@ class ViewController: UIViewController {
         
         //retrieving some data from parse:
         var query = PFQuery(className: "Prfl")
-        query.whereKey("name", equalTo: self.name)
+        query.whereKey("number", equalTo: self.number)
         query.getFirstObjectInBackgroundWithBlock { (score : PFObject!, error: NSError!) -> Void in
             if error == nil {
                 println(score.objectForKey("name"))
