@@ -22,10 +22,17 @@ class ViewController: UIViewController {
     var selfReceiveYes = [Int]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.editButton.hidden = true
         self.isLoggedIn = false
         var permissions = ["public_profile", "email"]
         Parse.setApplicationId("6KdHDtMQFn1MaqvCLRk0qpmHSWyMqd8NLD1dcAuR", clientKey: "cJkJaSsztnUDyR5C1hw1KQqjTvUfQ0XJYiGgjFim")
+        
+//        var push = PFPush()
+//        push.setMessage("This is another test")
+//        push.sendPushInBackgroundWithBlock { (isSuccessful : Bool!, error: NSError!) -> Void in
+//            println("isSuccessful: \(isSuccessful)")
+//        }
         
 //        var score = PFObject(className: "score")
 //        score.setObject("Rob", forKey: "name")

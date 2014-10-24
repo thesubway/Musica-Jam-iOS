@@ -21,7 +21,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.setApplicationId("j0ApSOkbsn3OTQO5wFYtS1xGZri3bHCt4i6hrlDz", clientKey: "1Wj6eLfD5gwpATaiqpO7N3A1m1MYTEI1SgBdz9hB")
         PFFacebookUtils.initializeFacebook()
+        
+        var pushSettings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
+        application.registerUserNotificationSettings(pushSettings)
+        application.registerForRemoteNotifications()
         return true
+    }
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        println("Success")
+    }
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        println("Failure")
     }
 
     func applicationWillResignActive(application: UIApplication) {

@@ -29,12 +29,12 @@
 		6D3A4FBD19F32935002D8119 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3A4FBC19F32935002D8119 /* Security.framework */; };
 		6D3A4FBF19F3294A002D8119 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3A4FBE19F3294A002D8119 /* StoreKit.framework */; };
 		6D3A4FC119F3295D002D8119 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3A4FC019F3295D002D8119 /* SystemConfiguration.framework */; };
-		6D5628AD19F364E700801237 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5628AC19F364E700801237 /* Parse.framework */; };
 		6D5628AF19F36D0100801237 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5628AE19F36D0100801237 /* FeedViewController.swift */; };
 		6D5628B119F3D62300801237 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5628B019F3D62300801237 /* EditViewController.swift */; };
 		6D5628B519F4057800801237 /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5628B419F4057800801237 /* MatchViewController.swift */; };
 		6D5628B719F40B0800801237 /* Sinch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5628B619F40B0800801237 /* Sinch.framework */; };
 		6D5628B919F40B2B00801237 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5628B819F40B2B00801237 /* AVFoundation.framework */; };
+		6D5628BF19F5CE3100801237 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5628BE19F5CE3100801237 /* Parse.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,12 +75,12 @@
 		6D3A4FBC19F32935002D8119 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6D3A4FBE19F3294A002D8119 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6D3A4FC019F3295D002D8119 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		6D5628AC19F364E700801237 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../Downloads/parse-library-1.4.1/Parse.framework"; sourceTree = "<group>"; };
 		6D5628AE19F36D0100801237 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		6D5628B019F3D62300801237 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		6D5628B419F4057800801237 /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
 		6D5628B619F40B0800801237 /* Sinch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sinch.framework; sourceTree = "<group>"; };
 		6D5628B819F40B2B00801237 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6D5628BE19F5CE3100801237 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,13 +94,13 @@
 				6D3A4FBD19F32935002D8119 /* Security.framework in Frameworks */,
 				6D3A4FBB19F32931002D8119 /* QuartzCore.framework in Frameworks */,
 				6D5628B719F40B0800801237 /* Sinch.framework in Frameworks */,
+				6D5628BF19F5CE3100801237 /* Parse.framework in Frameworks */,
 				6D3A4FB919F32925002D8119 /* MobileCoreServices.framework in Frameworks */,
 				6D3A4FB719F32914002D8119 /* libz.dylib in Frameworks */,
 				6D3A4FB519F328F8002D8119 /* CoreLocation.framework in Frameworks */,
 				6D3A4FB319F328F3002D8119 /* CoreGraphics.framework in Frameworks */,
 				6D3A4FB119F328E5002D8119 /* CFNetwork.framework in Frameworks */,
 				6D3A4FAF19F328D1002D8119 /* AudioToolbox.framework in Frameworks */,
-				6D5628AD19F364E700801237 /* Parse.framework in Frameworks */,
 				6D3A4FA419F3259D002D8119 /* FacebookSDK.framework in Frameworks */,
 				6D3A4FAD19F3286E002D8119 /* ParseFacebookUtils.framework in Frameworks */,
 				6D3A4FAB19F3286E002D8119 /* Bolts.framework in Frameworks */,
@@ -120,9 +120,9 @@
 		6D3A4F7019F2F072002D8119 = {
 			isa = PBXGroup;
 			children = (
+				6D5628BE19F5CE3100801237 /* Parse.framework */,
 				6D5628B819F40B2B00801237 /* AVFoundation.framework */,
 				6D5628B619F40B0800801237 /* Sinch.framework */,
-				6D5628AC19F364E700801237 /* Parse.framework */,
 				6D3A4FC019F3295D002D8119 /* SystemConfiguration.framework */,
 				6D3A4FBE19F3294A002D8119 /* StoreKit.framework */,
 				6D3A4FBC19F32935002D8119 /* Security.framework */,

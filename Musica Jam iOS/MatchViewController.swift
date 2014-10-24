@@ -8,8 +8,10 @@
 
 import UIKit
 
-class MatchViewController: UIViewController {
-
+class MatchViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet var textField : UITextField!
+    @IBOutlet var textDisplay: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         var alert: UIAlertView = UIAlertView()
@@ -17,11 +19,21 @@ class MatchViewController: UIViewController {
         alert.message = "You are matched!"
         alert.addButtonWithTitle("Ok")
         alert.show()
+        self.textField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        self.textDisplay.text = self.textField.text
+        return true
+    }
+    func textFieldDidEndEditing(textField: UITextField) {
+        textField.resignFirstResponder()
     }
 
 }
