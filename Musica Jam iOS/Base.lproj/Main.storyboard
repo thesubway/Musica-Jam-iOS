@@ -60,6 +60,21 @@
                                     <action selector="searchPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RBE-df-tN5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQg-lQ-hl3">
+                                <rect key="frame" x="162" y="195" width="120" height="24"/>
+                                <state key="normal" title="Button" image="facebooklogin.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="fbLoginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u5k-bF-TeW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9W-hX-TRP">
+                                <rect key="frame" x="152" y="146" width="140" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -76,11 +91,30 @@
                     <connections>
                         <outlet property="editButton" destination="5n9-po-c8g" id="rDZ-EI-PIb"/>
                         <outlet property="imageView" destination="mwG-J2-oX1" id="A43-pF-Xik"/>
+                        <outlet property="loggedInLabel" destination="G9W-hX-TRP" id="Lk2-C4-xvx"/>
                         <outlet property="welcomeLabel" destination="fnr-sR-Vdk" id="ONf-3Q-Ony"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gg2-FR-FPH">
+            <objects>
+                <viewController id="xIq-zq-BAp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nUu-4S-mcA"/>
+                        <viewControllerLayoutGuide type="bottom" id="iVo-W1-1Tr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="f83-Ge-DxZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1IF-v6-yp0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="841"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="rvd-yi-fLY">
@@ -139,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ftp-Vv-Xyj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="823"/>
+            <point key="canvasLocation" x="44" y="-664"/>
         </scene>
         <!--Edit View Controller-->
         <scene sceneID="glX-ZO-AK5">
@@ -157,7 +191,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mcq-bZ-lpp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="925" y="859"/>
+            <point key="canvasLocation" x="872" y="-664"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="facebooklogin.png" width="492" height="108"/>
+    </resources>
 </document>

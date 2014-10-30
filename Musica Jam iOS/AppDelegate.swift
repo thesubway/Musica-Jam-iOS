@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = UINavigationController(rootViewController: self.window!.rootViewController!)
         self.window!.rootViewController = nav
         
+        //production's id here:
+        
         Parse.setApplicationId("j0ApSOkbsn3OTQO5wFYtS1xGZri3bHCt4i6hrlDz", clientKey: "1Wj6eLfD5gwpATaiqpO7N3A1m1MYTEI1SgBdz9hB")
         PFFacebookUtils.initializeFacebook()
         
@@ -29,6 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         println("Success")
+        var currentInstallation = PFInstallation.currentInstallation()
+        currentInstallation.setDeviceTokenFromData(deviceToken)
+        currentInstallation.saveInBackground()
     }
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         println("Failure")

@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     @IBOutlet var editButton: UIButton!
     @IBOutlet var welcomeLabel: UILabel!
+    @IBOutlet var loggedInLabel: UILabel!
     @IBOutlet var imageView : UIImageView!
     var profileView: UIView!
     var isLoggedIn = false
@@ -25,48 +26,10 @@ class ViewController: UIViewController {
         
         self.editButton.hidden = true
         self.isLoggedIn = false
-        var permissions = ["public_profile", "email"]
-        Parse.setApplicationId("6KdHDtMQFn1MaqvCLRk0qpmHSWyMqd8NLD1dcAuR", clientKey: "cJkJaSsztnUDyR5C1hw1KQqjTvUfQ0XJYiGgjFim")
-        
-//        var push = PFPush()
-//        push.setMessage("This is another test")
-//        push.sendPushInBackgroundWithBlock { (isSuccessful : Bool!, error: NSError!) -> Void in
-//            println("isSuccessful: \(isSuccessful)")
-//        }
-        
-//        var score = PFObject(className: "score")
-//        score.setObject("Rob", forKey: "name")
-//        score.setObject(95, forKey: "number")
-//        score.saveInBackgroundWithBlock {(success: Bool!, error: NSError!) -> Void in
-//            if success == true {
-//                println("Score created with ID: \(score.objectId)")
-//            }
-//            else {
-//                var alert = UIAlertView()
-//                alert.title = "Failure"
-//                alert.message = "Score could not be sent:\n\(error)"
-//                alert.addButtonWithTitle("OK")
-//            }
-//        }
-        
-        
-        PFFacebookUtils.logInWithPermissions(permissions, { (user: PFUser!, error: NSError!) -> Void in
-            if user == nil {
-                NSLog("User cancelled login.")
-                self.authAgain()
-            }
-            else if user.isNew {
-                NSLog("New user signs up, logs in.")
-                self.isLoggedIn = true
-                self.loadNew()
-            }
-            else {
-                NSLog("User logs in.")
-                self.isLoggedIn = true
-                self.loadData()
-            }
-            
-        })
+
+        if PFUser.currentUser() != nil {
+            println("User logged in.")
+        }
     }
     
     func authAgain() {
@@ -226,6 +189,54 @@ class ViewController: UIViewController {
             }
             else if self.isLoggedIn == true {
                 println("Hello!")
+                self.loadData()
+            }
+            
+        })
+    }
+    
+    @IBAction func fbLoginPressed(sender: AnyObject) {
+        var permissions = ["public_profile", "email"]
+        //        Parse.setApplicationId("6KdHDtMQFn1MaqvCLRk0qpmHSWyMqd8NLD1dcAuR", clientKey: "cJkJaSsztnUDyR5C1hw1KQqjTvUfQ0XJYiGgjFim")
+        
+        var push = PFPush()
+        push.setMessage("This is another test")
+        push.sendPushInBackgroundWithBlock { (isSuccessful : Bool!, error: NSError!) -> Void in
+            println("isSuccessful: \(isSuccessful)")
+        }
+        
+        //        var score = PFObject(className: "score")
+        //        score.setObject("Rob", forKey: "name")
+        //        score.setObject(95, forKey: "number")
+        //        score.saveInBackgroundWithBlock {(success: Bool!, error: NSError!) -> Void in
+        //            if success == true {
+        //                println("Score created with ID: \(score.objectId)")
+        //            }
+        //            else {
+        //                var alert = UIAlertView()
+        //                alert.title = "Failure"
+        //                alert.message = "Score could not be sent:\n\(error)"
+        //                alert.addButtonWithTitle("OK")
+        //            }
+        //        }
+        
+        self.loggedInLabel.text = ""
+        PFFacebookUtils.logInWithPermissions(permissions, { (user: PFUser!, error: NSError!) -> Void in
+            if user == nil {
+                NSLog("User cancelled login.")
+                self.loggedInLabel.text = "User cancelled login"
+                self.authAgain()
+            }
+            else if user.isNew {
+                NSLog("New user signs up, logs in.")
+                self.loggedInLabel.text = "New User!"
+                self.isLoggedIn = true
+                self.loadNew()
+            }
+            else {
+                NSLog("User logs in.")
+                self.loggedInLabel.text = "Returning User."
+                self.isLoggedIn = true
                 self.loadData()
             }
             

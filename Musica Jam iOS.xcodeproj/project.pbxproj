@@ -35,6 +35,7 @@
 		6D5628B719F40B0800801237 /* Sinch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5628B619F40B0800801237 /* Sinch.framework */; };
 		6D5628B919F40B2B00801237 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5628B819F40B2B00801237 /* AVFoundation.framework */; };
 		6D5628BF19F5CE3100801237 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D5628BE19F5CE3100801237 /* Parse.framework */; };
+		6D7090A61A01C2F300512750 /* facebooklogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D7090A51A01C2F300512750 /* facebooklogin.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		6D5628B619F40B0800801237 /* Sinch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sinch.framework; sourceTree = "<group>"; };
 		6D5628B819F40B2B00801237 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6D5628BE19F5CE3100801237 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		6D7090A51A01C2F300512750 /* facebooklogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebooklogin.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 				6D3A4FA019F2F261002D8119 /* FriendsList.swift */,
 				6D3A4F8219F2F073002D8119 /* Main.storyboard */,
 				6D3A4F8519F2F073002D8119 /* Images.xcassets */,
+				6D7090A51A01C2F300512750 /* facebooklogin.png */,
 				6D3A4F8719F2F073002D8119 /* LaunchScreen.xib */,
 				6D3A4F7C19F2F072002D8119 /* Supporting Files */,
 				6D3A4FA619F327B5002D8119 /* Facebook-Bridge.m */,
@@ -279,6 +282,7 @@
 				6D3A4F8419F2F073002D8119 /* Main.storyboard in Resources */,
 				6D3A4F8919F2F073002D8119 /* LaunchScreen.xib in Resources */,
 				6D3A4F8619F2F073002D8119 /* Images.xcassets in Resources */,
+				6D7090A61A01C2F300512750 /* facebooklogin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +433,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Hoang (7FRU4QCRK3)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -450,6 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Daniel Hoang (L897SQDS85)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
