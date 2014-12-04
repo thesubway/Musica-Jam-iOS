@@ -84,7 +84,7 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
         //frame: CGRect(x: 20, y: 100, width: movieWidth, height: movieHeight)
         self.movieView.frame = CGRectMake(self.profileView.bounds.width / 2 - (movieWidth / 2), self.profileView.bounds.height / 2 - (movieHeight / 2), movieWidth, movieHeight)
         self.movieView.delegate = self
-        var request = NSURLRequest(URL: NSURL(string: "http://www.youtube.com/embed/\(self.youtubes[self.indexNum])"))
+        var request = NSURLRequest(URL: NSURL(string: "http://www.youtube.com/embed/\(self.youtubes[self.indexNum])")!)
         self.movieView.loadRequest(request)
         self.profileView.addSubview(movieView)
         
@@ -123,7 +123,7 @@ class FeedViewController: UIViewController, UIWebViewDelegate {
                         return
                     }
                     else {
-                        var request = NSURLRequest(URL: NSURL(string: "http://www.youtube.com/embed/\(self.youtubes[self.indexNum])"))
+                        var request = NSURLRequest(URL: NSURL(string: "http://www.youtube.com/embed/\(self.youtubes[self.indexNum])")!)
                         self.movieView.loadRequest(request)
                         self.nameLabel.text = score.objectForKey("name") as? String
                         self.opponentNumber = score.objectForKey("number") as Int

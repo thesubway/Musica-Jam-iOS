@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2743F73C1A30E58000CA7807 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2743F73B1A30E58000CA7807 /* ParseFacebookUtils.framework */; };
 		6D3A4F7F19F2F072002D8119 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A4F7E19F2F072002D8119 /* AppDelegate.swift */; };
 		6D3A4F8119F2F073002D8119 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A4F8019F2F073002D8119 /* ViewController.swift */; };
 		6D3A4F8419F2F073002D8119 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D3A4F8219F2F073002D8119 /* Main.storyboard */; };
@@ -18,7 +19,6 @@
 		6D3A4FA419F3259D002D8119 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3A4FA319F3259D002D8119 /* FacebookSDK.framework */; };
 		6D3A4FA719F327B5002D8119 /* Facebook-Bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A4FA619F327B5002D8119 /* Facebook-Bridge.m */; };
 		6D3A4FAB19F3286E002D8119 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3A4FA819F3286E002D8119 /* Bolts.framework */; };
-		6D3A4FAD19F3286E002D8119 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3A4FAA19F3286E002D8119 /* ParseFacebookUtils.framework */; };
 		6D3A4FAF19F328D1002D8119 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3A4FAE19F328D1002D8119 /* AudioToolbox.framework */; };
 		6D3A4FB119F328E5002D8119 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3A4FB019F328E5002D8119 /* CFNetwork.framework */; };
 		6D3A4FB319F328F3002D8119 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3A4FB219F328F3002D8119 /* CoreGraphics.framework */; };
@@ -49,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2743F73B1A30E58000CA7807 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "Musica Jam iOS/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
 		6D3A4F7919F2F072002D8119 /* Musica Jam iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Musica Jam iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D3A4F7D19F2F072002D8119 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D3A4F7E19F2F072002D8119 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +66,6 @@
 		6D3A4FA519F327B5002D8119 /* Musica Jam iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Musica Jam iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		6D3A4FA619F327B5002D8119 /* Facebook-Bridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Facebook-Bridge.m"; sourceTree = "<group>"; };
 		6D3A4FA819F3286E002D8119 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		6D3A4FAA19F3286E002D8119 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		6D3A4FAE19F328D1002D8119 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		6D3A4FB019F328E5002D8119 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6D3A4FB219F328F3002D8119 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -104,7 +104,7 @@
 				6D3A4FB119F328E5002D8119 /* CFNetwork.framework in Frameworks */,
 				6D3A4FAF19F328D1002D8119 /* AudioToolbox.framework in Frameworks */,
 				6D3A4FA419F3259D002D8119 /* FacebookSDK.framework in Frameworks */,
-				6D3A4FAD19F3286E002D8119 /* ParseFacebookUtils.framework in Frameworks */,
+				2743F73C1A30E58000CA7807 /* ParseFacebookUtils.framework in Frameworks */,
 				6D3A4FAB19F3286E002D8119 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,6 +122,7 @@
 		6D3A4F7019F2F072002D8119 = {
 			isa = PBXGroup;
 			children = (
+				2743F73B1A30E58000CA7807 /* ParseFacebookUtils.framework */,
 				6D5628BE19F5CE3100801237 /* Parse.framework */,
 				6D5628B819F40B2B00801237 /* AVFoundation.framework */,
 				6D5628B619F40B0800801237 /* Sinch.framework */,
@@ -155,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				6D3A4FA819F3286E002D8119 /* Bolts.framework */,
-				6D3A4FAA19F3286E002D8119 /* ParseFacebookUtils.framework */,
 				6D3A4F7E19F2F072002D8119 /* AppDelegate.swift */,
 				6D3A4F8019F2F073002D8119 /* ViewController.swift */,
 				6D5628AE19F36D0100801237 /* FeedViewController.swift */,
@@ -441,6 +441,9 @@
 					Jam,
 					iOS,
 					"/Users/danielhoang/Downloads/parse-library-1.4.1",
+					"$(PROJECT_DIR)/Musica",
+					Jam,
+					iOS,
 				);
 				INFOPLIST_FILE = "Musica Jam iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -463,6 +466,9 @@
 					Jam,
 					iOS,
 					"/Users/danielhoang/Downloads/parse-library-1.4.1",
+					"$(PROJECT_DIR)/Musica",
+					Jam,
+					iOS,
 				);
 				INFOPLIST_FILE = "Musica Jam iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -68,9 +68,11 @@ class ViewController: UIViewController {
             println("id: \(facebookID)")
             //NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
             var pictureURL = NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")
-            var imageData : NSData = NSData.dataWithContentsOfURL(pictureURL, options: nil, error: nil)
-            self.imageView.image = UIImage(data: imageData)
-            self.welcomeLabel.text = "Hello, \(name)"
+            if let thePicURL = pictureURL {
+                var imageData = NSData(contentsOfURL: thePicURL)
+                self.imageView.image = UIImage(data: imageData!)
+                self.welcomeLabel.text = "Hello, \(name)"
+            }
             
             
             
@@ -109,8 +111,8 @@ class ViewController: UIViewController {
             println("id: \(facebookID)")
             //NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
             var pictureURL = NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")
-            var imageData : NSData = NSData.dataWithContentsOfURL(pictureURL, options: nil, error: nil)
-            self.imageView.image = UIImage(data: imageData)
+            var imageData = NSData(contentsOfURL: pictureURL!)
+            self.imageView.image = UIImage(data: imageData!)
             self.welcomeLabel.text = "Hello, \(name)!"
             
             //name, username, pictureURL, town, store those onto parse.
